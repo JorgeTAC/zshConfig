@@ -98,13 +98,14 @@ source $ZSH/oh-my-zsh.sh
 #
 # Example aliases
 
-
-
+# Poetry
 
 
 # Cocoapods
 export GEM_HOME=$HOME/.gem
 export PATH=$GEM_HOME/bin:$PATH
+export PATH="/Library/Frameworks/Python.framework/Versions/3.7/bin:$PATH"
+
 
 # NVM
 export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
@@ -119,4 +120,3 @@ export PATH="$PNPM_HOME:$PATH"
 # pnpm end
 
 # Load Angular CLI autocompletion.
-source <(ng completion script)

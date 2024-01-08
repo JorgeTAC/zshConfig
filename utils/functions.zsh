@@ -37,12 +37,12 @@ function tscw () {
 }
 
 firmFFM() {
-  jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore ffmarket.jks -storepass 'ffm4rk3t' -keypass 'ffm4rk3t' android/app/build/outputs/bundle/release/app-release.aab ffmarket
+  jarsigner -verbose -sigalg SHA1withRSA -digestalg SHA1 -keystore ffmarket.jks -storepass 'ffm4rk3t' -keypass 'ffm4rk3t' android/app/build/outputs/apk/release/app-release-unsigned.apk ffmarket
   return
 }
 
 zipFFM() {
-  ./zipalign -v -p 4 android/app/build/outputs/bundle/release/app-release.aab FFMARKET.aab
+  ./zipalign -v -p 4 android/app/build/outputs/apk/release/app-release-unsigned.apk FFMARKET.apk
   return
 }
 
@@ -156,7 +156,8 @@ function npmi() {
     return
   fi
   if [ $# -lt 1 ]
-  thennpm install $2 $3
-
+  then npm install $2 $3 $4 $5 $6 $7 $8 $9
+    return
+  fi
   return
 }

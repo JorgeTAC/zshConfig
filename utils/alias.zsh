@@ -5,7 +5,7 @@ alias ionAndroid="ionic build --prod --release && npx cap sync android && npx ca
 alias ionIos="ionic build --prod --release && npx cap sync ios && npx cap copy ios && npx cap open ios"
 
 # Javascript command line tools
-alias nvmpls="node ~/Workspace/Learning/nodejs/ng-manager/src/index.js"
+alias nvmpls="node ~/Workspace/Learning/nodejs/nvmpls/src/index.js"
 alias vsc="node ~/Workspace/Learning/nodejs/workspace-manager/index.js"
 
 # Git aliases
