@@ -25,7 +25,6 @@ function ayuda () {
   return
 }
 
-
 # function to execute the command node_modules/.bin/tsc --watch and detect if the folder is functions
 function tscw () {
   # check if actual folder is named functions
@@ -48,116 +47,5 @@ zipFFM() {
 
 uploadTrans() {
   cd ~/Workspace/FFMarket/ffmarket_translation && gsutil cp *.json gs://fitfood-22c23.appspot.com/market && git add . && git commit -m "[bot] Upload translations" && git push origin
-  return
-}
-
-function fbs () {
- while [[ "$#" -gt 0 ]]
-do case $1 in
-    -p|--port) port="$2"
-    shift;;
-esac
-shift
-done
-# check if actual folder is named functions
-if [ -d "functions" ]; then
-  cd functions
-fi
-
- nvm use 14.21.1 && firebase serve --only functions --port $port
-}
-
-fbe() {
-  if [[ $1 =~ ^(-o|--only) ]]
-  then
-      only="$2"
-  fi
-
-  if [  $# -eq 0 ]
-  then
-    only="0"
-  fi
-
-  if [ only -eq 0 ]
-  then 
-    nvm use 14.21.1 && firebase emulators:start
-    return
-  fi
-
-  nvm use 14.21.1 && firebase emulators:start --only $only
-
-}
-
-ngs() {
-  if [ $# -eq 0 ]
-  then
-    echo "Usage: ngs <version> <enviroment>"
-    ng serve -o
-    return
-  fi
-  if [ $# -lt 1 ]
-  then
-    nvm use $1 && ng serve -o
-    return
-  fi
-  if [ $# -lt 2 ]
-  then
-    nvm use $1 && ng serve -o --configuration=$2
-    return
-  fi
-  nvm use $1 && ng serve -o --configuration=$2 --port=$3
-
-  return
-}
-
-ngb() {
-  if [ $# -eq 0 ]
-  then
-    echo "Usage: ngs <version> <enviroment>"
-    return
-  fi
-  if [ $# -lt 2 ]
-  then
-    nvm use $1 && ng build --prod && nvm use 14.21.1 && firebase deploy --only hosting
-    return
-  fi
-
-
-  return
-} 
-
-ions() {
-  if [ $# -lt 0 ]
-  then
-    echo "Usage: ions <version> <enviroment>"
-    ionic serve -o
-    return
-  fi
-
-  if [ $# -lt 1 ]
-  then
-    nvm use $1 && ionic serve -o
-    return
-  fi
-  if [ $# -lt 2 ]
-  then
-    nvm use $1 && ionic serve -o --configuration=$2
-    return
-  fi
-  nvm use $1 && ionic serve -o --configuration=$2 --port=$3
-  return
-}
-
-function npmi() {
-  if [ $# -eq 0 ]
-  then
-    echo "Usage: npmi <package> "
-    npm install
-    return
-  fi
-  if [ $# -lt 1 ]
-  then npm install $2 $3 $4 $5 $6 $7 $8 $9
-    return
-  fi
   return
 }
